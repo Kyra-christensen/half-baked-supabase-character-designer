@@ -1,6 +1,7 @@
 import { 
     checkAuth, 
     getCharacter,
+    getCatchphrase,
     logout, 
     createCharacter,
     updateBottom,
@@ -30,25 +31,31 @@ let bottomCount = 0;
 
 headDropdown.addEventListener('change', async() => {
     // increment the correct count in state
-
+    headCount++;
     // update the head in supabase with the correct data
-    refreshData();
+    const updatedCharacter = await updateHead(headDropdown.value);
+
+    refreshData(updatedCharacter);
 });
 
 
 middleDropdown.addEventListener('change', async() => {
     // increment the correct count in state
-    
+    middleCount++;
     // update the middle in supabase with the correct data
-    refreshData();
+    const updatedCharacter = await updateMiddle(middleDropdown.value);
+
+    refreshData(updatedCharacter);
 });
 
 
 bottomDropdown.addEventListener('change', async() => {
     // increment the correct count in state
-    
+    bottomCount++;
     // update the bottom in supabase with the correct data
-    refreshData();
+    const updatedCharacter = await updateBottom(bottomDropdown.value);
+
+    refreshData(updatedCharacter);
 });
 
 catchphraseButton.addEventListener('click', async() => {
@@ -57,8 +64,10 @@ catchphraseButton.addEventListener('click', async() => {
     // go fetch the old catch phrases
     
     // update the catchphrases array locally by pushing the new catchphrase into the old array
-
+    
     // update the catchphrases in supabase by passing the mutated array to the updateCatchphrases function
+    
+
     refreshData();
 });
 
