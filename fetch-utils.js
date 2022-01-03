@@ -42,6 +42,13 @@ export async function updateBottom(value){
     return checkError(response);    
 }
 
+export async function getCatchphrase() {
+    const response = await client
+        .from('characters')
+        .select();
+    return checkError(response);
+}
+
 export async function updateChatchphrases(value){
     const currentUserId = client.auth.user().id;
 
